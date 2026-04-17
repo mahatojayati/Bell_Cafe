@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import { Coffee, MapPin, Phone, Star, Clock, UtensilsCrossed, Navigation, ArrowRight, Menu as MenuIcon, X } from "lucide-react";
-import { useState } from "react";
+import { useState, ButtonHTMLAttributes } from "react";
 
 // Content Data
 const MENU_ITEMS = [
@@ -26,7 +26,11 @@ const REVIEWS = [
 ];
 
 // Reusable Components
-function Button({ children, variant = "primary", className = "", ...props }: any) {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "outline" | "ghost";
+}
+
+function Button({ children, variant = "primary", className = "", ...props }: ButtonProps) {
   const baseStyle = "inline-flex items-center justify-center font-black uppercase tracking-widest transition-all duration-200 border-2 border-[#1A1A1A] rounded-none";
   const variants = {
     primary: "bg-[#D97706] text-white hover:bg-[#1A1A1A] px-8 py-4",
